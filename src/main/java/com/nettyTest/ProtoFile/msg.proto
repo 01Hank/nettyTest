@@ -1,0 +1,10 @@
+package com.nettyTest.ProtoFile;
+message Client {
+  required string head = 1;
+  required string body = 2;
+}
+
+message Server {
+  required int32 code=1;
+  required string message=2;
+}
