@@ -1,5 +1,6 @@
 package com.nettyTest.NettyServer.Handler;
 
+import com.google.protobuf.Descriptors;
 import com.google.protobuf.Message;
 import com.nettyTest.ProtoFile.Msg;
 import io.netty.channel.ChannelHandlerContext;
@@ -37,6 +38,9 @@ public class ServerHandler extends SimpleChannelInboundHandler<Message> {
         // 收到消息直接打印输出
         System.out.println(msg.getClass());
         Msg.Server response = null;
+        String name = msg.getDescriptorForType().getName();
+        System.out.println("名字：" + name);
+
         if(msg instanceof Msg.Client) {
             Msg.Client clientMsg = (Msg.Client) msg;
             System.out.println(ctx.channel().remoteAddress() + " Say : " + clientMsg.getBody());

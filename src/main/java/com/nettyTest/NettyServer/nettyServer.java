@@ -18,12 +18,12 @@ public class nettyServer {
     /**
      * boss 线程组用于处理连接工作
      */
-    private EventLoopGroup boss = new NioEventLoopGroup();
+    private static final EventLoopGroup boss = new NioEventLoopGroup();
 
     /**
      * work 线程组用于数据处理
      */
-    private EventLoopGroup work = new NioEventLoopGroup();
+    private static final EventLoopGroup work = new NioEventLoopGroup();
 
     @Value("${netty.port}")
     private Integer port;

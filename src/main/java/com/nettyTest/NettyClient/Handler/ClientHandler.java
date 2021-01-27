@@ -16,8 +16,10 @@ public class ClientHandler extends SimpleChannelInboundHandler<Message> {
      */
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
         System.out.println("Client active ");
-        Msg.Client msg = Msg.Client.newBuilder().setHead("Content-Type:application/json;charset=UTF-8").setBody("hello world!").build();
-        ctx.writeAndFlush(msg);
+        Msg.Client.Builder builder = Msg.Client.newBuilder();
+        builder.setHead("head");
+        builder.setBody("body");
+        ctx.writeAndFlush(builder.build());
         super.channelActive(ctx);
     }
 
