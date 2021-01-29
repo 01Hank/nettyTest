@@ -1,6 +1,7 @@
 import com.nettyTest.Command.Command;
 import com.nettyTest.Command.CommandImpl.DBCommandImpl;
 import com.nettyTest.Command.CommandImpl.PlayerCommandImpl;
+import com.nettyTest.Command.Data.MsgInfo;
 import com.nettyTest.Command.Handler;
 import com.nettyTest.Command.HandlerPack.DBDataHandler;
 import com.nettyTest.Command.HandlerPack.PlayerDataHandler;
@@ -34,7 +35,7 @@ public class test {
         commandList.add(command);
 
         //打包第二个命令
-        handler = new PlayerDataHandler();
+        handler = new PlayerDataHandler(new MsgInfo());
 
         command = new PlayerCommandImpl();
 

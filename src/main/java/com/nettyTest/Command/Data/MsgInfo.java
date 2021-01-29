@@ -1,6 +1,7 @@
 package com.nettyTest.Command.Data;
 
 import com.google.protobuf.Message;
+import io.netty.channel.ChannelHandlerContext;
 
 /**
  * 协议数据
@@ -25,6 +26,11 @@ public class MsgInfo {
      * 消息
      */
     private Object message;
+
+    /**
+     * netty信息
+     */
+    private ChannelHandlerContext ctx;
 
     public int getChannle() {
         return channle;
@@ -56,5 +62,13 @@ public class MsgInfo {
 
     public void setType(int type) {
         this.type = type;
+    }
+
+    public ChannelHandlerContext getCtx() {
+        return ctx;
+    }
+
+    public void setCtx(ChannelHandlerContext ctx) {
+        this.ctx = ctx;
     }
 }
