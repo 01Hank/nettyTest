@@ -3,15 +3,19 @@ package com.nettyTest.NettyServer.Handler;
 import com.google.protobuf.Descriptors;
 import com.google.protobuf.Message;
 import com.nettyTest.Command.Data.MsgInfo;
+import com.nettyTest.Context.TestContextAware;
 import com.nettyTest.ProtoFile.Msg;
+import com.nettyTest.Test.BaseHandler;
 import com.nettyTest.ThreadPool.DisMonitorTaskServer;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.net.InetAddress;
 
-
 public class ServerHandler extends SimpleChannelInboundHandler<Message> {
+
     /**
      * 任务线程分发服务
      */
@@ -51,6 +55,10 @@ public class ServerHandler extends SimpleChannelInboundHandler<Message> {
         msgInfo.setMessage(msg);
         msgInfo.setPlayerId(12345);
         msgInfo.setCtx(ctx);
-        this.server.putMsg(msgInfo, 1);
+//        this.server.putMsg(msgInfo, 1);
+        //创建handler
+        String simpleName = msg.getClass().getSimpleName();
+        BaseHandler handler = TestContextAware.createHandler(simpleName);
+        handler.execute(msgInfo);
     }
 }

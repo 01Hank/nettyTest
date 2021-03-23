@@ -1,6 +1,6 @@
 package com.nettyTest.Context;
 
-import com.nettyTest.Annotation.Msg;
+import com.nettyTest.Annotation.MsgHandler;
 import com.nettyTest.Test.BaseHandler;
 import com.nettyTest.Test.TestHandler;
 import com.nettyTest.nettyStart;
@@ -28,13 +28,24 @@ public class TestContextAware implements ApplicationContextAware {
     }
 
     /**
+     * 获取bean
+     * @param tClass
+     * @param <T>
+     * @return
+     */
+    public static <T> T getBean(Class<T> tClass){
+        Class bean = context.getBean(tClass.getClass());
+        return (T) bean;
+    }
+
+    /**
      * 初始化工厂
      */
     public void initMsg(){
         Map<String, BaseHandler> beansOfType = context.getBeansOfType(BaseHandler.class);
         for(BaseHandler handler:beansOfType.values()){
             Class<? extends BaseHandler> aClass = handler.getClass();
-            Msg msg = aClass.getAnnotation(Msg.class);
+            MsgHandler msg = aClass.getAnnotation(MsgHandler.class);
             if(msg != null){
                 String simpleName = msg.clzz().getSimpleName();
                 factory.put(simpleName,aClass);
@@ -42,5 +53,15 @@ public class TestContextAware implements ApplicationContextAware {
         }
 
         log.info("handler工厂初始化完成");
+    }
+
+    /**
+     * 创建handler
+     * @param simpleName
+     * @return
+     */
+    public static BaseHandler createHandler(String simpleName) throws IllegalAccessException, InstantiationException {
+        Class aClass = factory.get(simpleName);
+        return (BaseHandler) aClass.newInstance();
     }
 }

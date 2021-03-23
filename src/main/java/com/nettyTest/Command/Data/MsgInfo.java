@@ -25,7 +25,7 @@ public class MsgInfo {
     /**
      * 消息
      */
-    private Object message;
+    private Message message;
 
     /**
      * netty信息
@@ -48,11 +48,11 @@ public class MsgInfo {
         this.playerId = playerId;
     }
 
-    public Object getMessage() {
+    public Message getMessage() {
         return message;
     }
 
-    public void setMessage(Object message) {
+    public void setMessage(Message message) {
         this.message = message;
     }
 
