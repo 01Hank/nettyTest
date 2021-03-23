@@ -52,21 +52,5 @@ public class ServerHandler extends SimpleChannelInboundHandler<Message> {
         msgInfo.setPlayerId(12345);
         msgInfo.setCtx(ctx);
         this.server.putMsg(msgInfo, 1);
-//        // 收到消息直接打印输出
-//        System.out.println(msg.getClass());
-//        Msg.Server response = null;
-//        String name = msg.getDescriptorForType().getName();
-//        System.out.println("名字：" + name);
-//
-//        if (msg instanceof Msg.Client) {
-//            Msg.Client clientMsg = (Msg.Client) msg;
-//            System.out.println(ctx.channel().remoteAddress() + " Say : " + clientMsg.getBody());
-//            response = Msg.Server.newBuilder().setCode(0).setMessage("Received client message success").build();
-//        } else {
-//            response = Msg.Server.newBuilder().setCode(-1).setMessage("client message is illegal").build();
-//            System.out.println("client message is illegal");
-//        }
-//        // 返回客户端消息 - 我已经接收到了你的消息
-//        ctx.writeAndFlush(response);
     }
 }

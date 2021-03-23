@@ -1,6 +1,8 @@
 package com.nettyTest.Test;
 
 import com.nettyTest.Bean.BaseBean;
+import org.springframework.stereotype.Component;
 
-public class BaseHandler<T extends BaseBean> {
+
+public interface BaseHandler<T extends BaseBean> {
 }

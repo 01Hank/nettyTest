@@ -1,10 +1,13 @@
 package com.nettyTest.NettyServer;
+import com.nettyTest.nettyStart;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelOption;
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -15,6 +18,8 @@ import java.net.InetSocketAddress;
 
 @Component
 public class nettyServer {
+    private static final Logger log = LoggerFactory.getLogger(nettyServer.class);
+
     /**
      * boss 线程组用于处理连接工作
      */
@@ -48,12 +53,13 @@ public class nettyServer {
             //绑定端口 同步等待成功
             ChannelFuture f = bootstrap.bind(port).sync();
             //等待服务端监听端口关闭
-            f.channel().closeFuture().sync();
+//            f.channel().closeFuture().sync();
+            log.info("启动netty服务端成功");
         } catch (InterruptedException e) {
             e.printStackTrace();
         } finally {
-            work.shutdownGracefully();
-            boss.shutdownGracefully();
+//            work.shutdownGracefully();
+//            boss.shutdownGracefully();
         }
     }
 
@@ -62,6 +68,6 @@ public class nettyServer {
     public void destory() throws InterruptedException {
         boss.shutdownGracefully().sync();
         work.shutdownGracefully().sync();
-        System.err.println("关闭netty!!!");
+        log.info("关闭netty!!!");
     }
 }
