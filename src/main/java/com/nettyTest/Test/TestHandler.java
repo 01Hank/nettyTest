@@ -15,5 +15,8 @@ public class TestHandler implements BaseHandler<Msg.Client>{
     public void execute(MsgInfo msgInfo) throws InvalidProtocolBufferException {
         Msg.Client req = Msg.Client.parseFrom(msgInfo.getMessage().toByteArray());
         System.out.println("收到客户端消息：" + req.getBody());
+
+        Msg.Server response = Msg.Server.newBuilder().setCode(0).setMessage("Received client message success").build();
+        msgInfo.getCtx().writeAndFlush(response);
     }
 }
