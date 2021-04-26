@@ -47,7 +47,7 @@ public class test {
         commandList.add(command);
 
         //执行命令
-        for(int i=0,len=commandList.size();i<len;i++){
+        for (int i = 0, len = commandList.size(); i < len; i++) {
             //执行命令
             commandList.get(i).action();
         }

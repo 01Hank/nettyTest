@@ -20,7 +20,7 @@ public class TestContextAware implements ApplicationContextAware {
 
     private static ApplicationContext context = null;
 
-    private static Map<String,Class> factory = new HashMap<>();
+    private static Map<String, Class> factory = new HashMap<>();
 
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
@@ -29,11 +29,12 @@ public class TestContextAware implements ApplicationContextAware {
 
     /**
      * 获取bean
+     *
      * @param tClass
      * @param <T>
      * @return
      */
-    public static <T> T getBean(Class<T> tClass){
+    public static <T> T getBean(Class<T> tClass) {
         Class bean = context.getBean(tClass.getClass());
         return (T) bean;
     }
@@ -41,14 +42,14 @@ public class TestContextAware implements ApplicationContextAware {
     /**
      * 初始化工厂
      */
-    public void initMsg(){
+    public void initMsg() {
         Map<String, BaseHandler> beansOfType = context.getBeansOfType(BaseHandler.class);
-        for(BaseHandler handler:beansOfType.values()){
+        for (BaseHandler handler : beansOfType.values()) {
             Class<? extends BaseHandler> aClass = handler.getClass();
             MsgHandler msg = aClass.getAnnotation(MsgHandler.class);
-            if(msg != null){
+            if (msg != null) {
                 String simpleName = msg.clzz().getSimpleName();
-                factory.put(simpleName,aClass);
+                factory.put(simpleName, aClass);
             }
         }
 
@@ -57,6 +58,7 @@ public class TestContextAware implements ApplicationContextAware {
 
     /**
      * 创建handler
+     *
      * @param simpleName
      * @return
      */

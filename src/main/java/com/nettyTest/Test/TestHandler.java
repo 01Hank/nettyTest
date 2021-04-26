@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @MsgHandler(clzz = Msg.Client.class)
-public class TestHandler implements BaseHandler<Msg.Client>{
+public class TestHandler implements BaseHandler<Msg.Client> {
 
     @Override
     public void execute(MsgInfo msgInfo) throws InvalidProtocolBufferException {

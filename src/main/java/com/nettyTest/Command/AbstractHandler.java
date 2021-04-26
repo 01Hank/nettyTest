@@ -10,7 +10,7 @@ import java.util.Map;
 public abstract class AbstractHandler implements Handler {
 
     //可以统一做一些公用操作
-    public void  print(String name){
-        System.out.println("这是一个" + name );
+    public void print(String name) {
+        System.out.println("这是一个" + name);
     }
 }

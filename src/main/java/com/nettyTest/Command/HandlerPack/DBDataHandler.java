@@ -30,8 +30,8 @@ public class DBDataHandler extends AbstractHandler {
     @Override
     public void operation() {
         super.print("玩家操作，玩家id=" + this.playerId);
-        switch (cmdType){
-            case  1:
+        switch (cmdType) {
+            case 1:
                 System.out.println("存储玩家信息：" + this.data);
                 break;
             case 2:

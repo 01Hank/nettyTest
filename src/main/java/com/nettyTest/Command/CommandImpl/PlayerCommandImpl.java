@@ -6,7 +6,7 @@ import com.nettyTest.Command.AbstractCommand;
 /**
  * 玩家命令类
  */
-public class PlayerCommandImpl  extends AbstractCommand {
+public class PlayerCommandImpl extends AbstractCommand {
     @Override
     public void action() {
         //执行操作

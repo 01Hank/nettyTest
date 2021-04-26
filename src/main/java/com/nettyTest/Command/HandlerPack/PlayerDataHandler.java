@@ -25,7 +25,7 @@ public class PlayerDataHandler extends AbstractHandler {
     @Override
     public void operation() {
         ChannelHandlerContext ctx = msgInfo.getCtx();
-        Message msg = (Message)msgInfo.getMessage();
+        Message msg = (Message) msgInfo.getMessage();
 
         Msg.Server response = null;
         if (msg instanceof Msg.Client) {

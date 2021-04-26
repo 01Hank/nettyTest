@@ -16,6 +16,7 @@ public interface Command {
 
     /**
      * 放入处理器
+     *
      * @param handler
      */
     void setDoHandler(Handler handler);

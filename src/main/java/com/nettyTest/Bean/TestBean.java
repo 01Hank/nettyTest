@@ -1,6 +1,6 @@
 package com.nettyTest.Bean;
 
-public class TestBean extends BaseBean{
+public class TestBean extends BaseBean {
     private int id;
 
     public int getId() {

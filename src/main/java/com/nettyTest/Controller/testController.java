@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/test")
 public class testController {
     @GetMapping("/get")
-    public String yes(){
+    public String yes() {
         return "AMD YES!";
     }
 }

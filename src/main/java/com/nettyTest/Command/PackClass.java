@@ -7,8 +7,7 @@ public class PackClass {
     /**
      * 打包对象
      */
-   private PackObject packObject;
-
+    private PackObject packObject;
 
 
     public void setPackObject(PackObject packObject) {
@@ -24,7 +23,6 @@ public class PackClass {
         //打包命令
         this.packCommand();
     }
-
 
 
     /**
